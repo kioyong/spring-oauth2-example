@@ -8,10 +8,10 @@
 		<version>2.2.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.yong.security</groupId>
-	<artifactId>spring-oauth2-server</artifactId>
+	<groupId>com.example.authorization</groupId>
+	<artifactId>authorization-server-example</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-oauth2-server</name>
+	<name>authorization-server-example</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
