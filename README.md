@@ -1,4 +1,4 @@
-# spring-oauth2-example
+# OAuth2 Boot Example
 
 ### Spring Security OAuth2 Boot simplifies standing up an OAuth 2.0 Authorization Server.
 /authorization-server-example [Article
