@@ -10,3 +10,5 @@ security:
     client:
       client-id: first-client
       client-secret: noonewilleverguess
+
+logging.level.org.springframework.security: DEBUG
