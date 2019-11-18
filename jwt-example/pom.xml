@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example.authorization</groupId>
-	<artifactId>jwks-example</artifactId>
+	<artifactId>jwt-example</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>jwks-example</name>
+	<name>jwt-example</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

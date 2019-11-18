@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerEndpointsConfiguration;
@@ -21,11 +22,14 @@ public class JwkSetConfiguration extends AuthorizationServerConfigurerAdapter {
 
     private AuthenticationManager authenticationManager;
     private KeyPair keyPair;
+    private UserDetailsService userDetailsService;
 
     public JwkSetConfiguration(AuthenticationConfiguration authenticationConfiguration,
-                               KeyPair keyPair) throws Exception {
+                               KeyPair keyPair,
+                               UserDetailsService userDetailsService) throws Exception {
         this.authenticationManager = authenticationConfiguration.getAuthenticationManager();
         this.keyPair = keyPair;
+        this.userDetailsService = userDetailsService;
     }
 
     @Override
@@ -34,7 +38,7 @@ public class JwkSetConfiguration extends AuthorizationServerConfigurerAdapter {
             .inMemory()
             .withClient("first-client")
             .secret("{noop}noonewilleverguess")
-            .authorizedGrantTypes("password", "refresh_token")
+            .authorizedGrantTypes("password", "refresh_token", "authorization_code", "client_credentials", "implicit")
             .scopes("any")
             .accessTokenValiditySeconds(3600)
         ;
@@ -46,7 +50,8 @@ public class JwkSetConfiguration extends AuthorizationServerConfigurerAdapter {
         endpoints
             .authenticationManager(this.authenticationManager)
             .tokenStore(tokenStore())
-            .accessTokenConverter(accessTokenConverter());
+            .accessTokenConverter(accessTokenConverter())
+            .userDetailsService(userDetailsService);
     }
 
     @Bean

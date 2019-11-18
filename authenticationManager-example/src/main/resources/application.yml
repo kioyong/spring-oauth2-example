@@ -3,4 +3,4 @@ server:
 
 spring:
   application:
-    name: authorization-server-example
+    name: AuthenticationManager-example
